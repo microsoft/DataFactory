@@ -170,4 +170,32 @@ This view allows you to understand how your two queries are connected with each 
 
     **Note**: what this operation does is simply expand the contents that were inside of the table values to be new columns in the outer table.
 
-6. With the discount value now at the row level, we can create a new column to calculate the total amount after discount. To do so, go to the ribbon and select the Add column tab. Select the option that reads “Custom column” from within the General group.
+6. With the discount value now at the row level, we can create a new column to calculate the total amount after discount. To do so, go to the ribbon and select the **Add column** tab. Select the option that reads **Custom column** from within the General group.
+
+![Custom column button inside the Add column tab in the ribbon](media/module-2-custom-column.png)
+
+7.	Inside the Custom column dialog, you are able to use the Power Query formula language (also known as M) to define how your new column should be calculated. Input the values as follows:
+
+* **New column name** = TotalAfterDiscount
+* **Data type** = Decimal number
+* **Custom column formula** = ```if [totalAmount] > 0 then [totalAmount] * ( 1 -[Discount] ) else [totalAmount]```
+
+![Custom column dialog with the formula for the TotalAfterDiscount column and the Decimal number data type set](media/module-2-custom-column-formula.png)
+
+    **Note**: what this formula does is check if the totalAmount column is a negative number, effectively a credit, and keeps the same value. If it’s not, then it simply calculates the new total amount by applying the correct discount.
+
+8. Select the newly created **TotalAfterDiscount** column and go to the Transform tab from the ribbon. Inside the transform tab, select the **Rounding…** option inside the submenu for the Rounding option in the Number column group. 
+
+![Rounding entry point in the transform tab of the ribbon](media/module-2-rounding-button.png)
+
+9. Inside the Round dialog, input the value 2 and hit OK.
+
+![Round dialog with the value two entered](media/module-2-round-dialog.png)
+
+10. Change the data type of the **lpepPickupDatetime** from *Date* to *Date/Time*.
+
+![Column lpepPickupDatetime changed back to the data type datetime](media/module-2-data-type-changed-back.png)
+
+11.	Rename the query from Merge to Output by double clicking on the query name.
+
+## Load the output query to a table in the Lakehouse
