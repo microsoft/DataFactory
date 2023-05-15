@@ -7,7 +7,7 @@ The major steps in Dataflow are as follows:
 * Get raw data from Lakehouse moved by upstream Copy activity
 * Transform the data imported from the Lakehouse
 * Connect to CSV file containing the discounts data
-* Transform the discounts data
+* Transform discounts data
 * Combine trips and discounts data 
 * Load the output query to a gold Lakehouse table
 
@@ -83,4 +83,46 @@ To do this, select **Options** from the ribbon pane, then select the first 3 opt
 7. In the filter rows dialog, select only the dates within the month of **January of the year 2015**, then click OK.
 
 ![Filter rows dialog for the dates between option](media/module-2-filter-dialog-dates.png)
+
+## Connect to CSV file containing the discounts data
+
+Now with the data from the trips in place, we want to load the data that contains the respective discounts for each day and VendorID and prepare such data before combining it with the trips data.
+
+1. From the **Home tab** in the ribbon, select the **Get Data** option and from the submenu select the **Text/CSV** option.
+
+![Get data submenu in the Home tab showing the Text / CSV connector](media/module-2-text-csv-connector-get-data.png)
+
+2.	Inside the connection settings for the connector, enter the following and then hit **Next**:
+* **url** = https://raw.githubusercontent.com/ekote/azure-architect/master/Generated-NYC-Taxi-Green-Discounts.csv
+* **Authentication kind** = *Anonymous*
+
+![Connect to data source dialog for the Text CSV connector after entering the previously mentioned connection settings](media/module-2-create-connection-text-csv.png)
+
+3. Inside the Preview file data, click the **Create** button.
+
+![Preview of the TXT / CSV file that you've connected to and the option to create a new query](media/module-preview-file-data-create.png)
+
+## Transform discounts data
+
+1.	The headers appear to be in the first row. Promote them by clicking the *contextual table menu* in the Data Preview grid and select the option that reads **Use first row as headers**.
+
+![Use first row as headers option inside the table contextual menu for the table in the data preview](media/module-2-promote-headers.png)
+
+
+```Note: after promoting the headers, you will notice that a new step will be added to your Applied steps pane to set the data types of your columns```
+
+2.	Right-click the **VendorID** column and from the contextual menu select the option that reads **Unpivot other columns**. This allows you to transform columns into attribute-value pairs, where columns become rows.
+
+![Unpivot other columns option after right clicking the VendorID column](media/module-2-unpivot-other-columns.png)
+
+3.	With the table unpivoted, **rename the columns** by double clicking them and using the new names below:
+	
+* Attribute -> Date
+* Valuw -> Discount
+
+![Columns renamed](media/module-2-rename-columns.png)
+
+4. Change the data type of the column **Date** to be a *date* type
+
+![Data type of columns changed](media/module-2-data-type-changed.png)
 
