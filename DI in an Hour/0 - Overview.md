@@ -1,9 +1,8 @@
+# Data Integration in an Hour Overview
 
-## Your Data Integration Journey Story Line
+This laboratory includes ingesting raw data from the source store into a table of the data Lakehouse, processing the data, moving it to the gold table of the data Lakehouse, sending an email to notify you once all the jobs are complete, and finally setting up the entire flow to run on a scheduled basis.   
 
-This includes ingesting raw data from the source store into the bronze table of the data Lakehouse, processing the data, moving it to the gold table of the data Lakehouse, sending an email to notify you once all the jobs are complete, and finally setting up the entire flow to run on a scheduled basis.   
-
-The scenario is divided into below:
+The scenario is divided into the modules below:
 
 * **Module 1**: Create your first Pipeline to ingest raw data from a Blob storage to a table in your  Data Lakehouse. 
 * **Module 2**: Create your first Dataflow to process the raw data from the loaded table, merge it with other data found on the web to enrich it and create a new table that will be loaded to your Data Lakehouse as a table ready for analytical processes. 
