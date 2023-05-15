@@ -82,4 +82,20 @@ IN this section you will create a copy activity to load data directly into the l
 
 ### Run and view results of your copy activity
 
-1.	Click **Run** and then Save and run to run copy activity.
+1. In the ribbon, access the **Run tab** and click **Run** and then Save and run to run copy activity.
+
+![Run activity button in the ribbon inside the Run tab](media/module-1-run-button.png)
+
+![Save and run dialog after clicking the Run button to save the pipeline and run it](media/module-1-save-and-run.png)
+
+2. You can monitor the running process and check the results on the **Output tab** below the pipeline canvas. Select the run details button (with the **glasses icon** highlighted) to view the run details.
+
+![Output tab for the Copy activity inside the data pipeline showcasing the status of the run of the activity and with the details icon highlighted](media/module-1-output-tab.png)
+
+3. The run details show 1,508,501 rows read and written.
+
+![Copy data details dialog showcasing a total of 1508501 rows written to the lakehouse as well as the duration of the run](media/module-1-copy-data-details.png)
+
+4.	Expand the **Duration breakdown**, you can know the time duration of each stage in copy activity. After reviewing the copy details, click **Close**.
+
+![Duration breakdown for the copy data activity showcasing total time spent for each process of the activity](media/module-1-duration-breakdown.png)
