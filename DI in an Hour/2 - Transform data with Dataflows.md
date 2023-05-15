@@ -199,3 +199,29 @@ This view allows you to understand how your two queries are connected with each 
 11.	Rename the query from Merge to Output by double clicking on the query name.
 
 ## Load the output query to a table in the Lakehouse
+
+With the output query now fully prepared and with the data that we’re looking to load, we can proceed to define the output destination for the query.
+
+1.	Select the **Output** query and from the Home tab select the **Add data destination** option. Pick the *Lakehouse* option from the submenu:
+
+![Lakehouse option for data destination for the Add data destination entry point inside the Home tab of the ribbon](media/module-2-lakehouse-destination.png)
+
+2. When prompted inside the Connect to data destination dialog, the connection should be automatically populated and you can click **Next**.
+
+3. In the **Choose data destination target** dialog, select the Lakehouse where you wish load the data and give your new table name *MyOutputTable* and click **Next**.
+
+![Choose data destination target dialog accesing the existing Lakehouse and creating a new table with the name MyOutputTable](media/module-2-table-data-destination.png)
+
+4. Inside the **Choose data destination settings**, use *Replace* as the **Update method** and make sure that all columns are correctly mapped. Click the **Save settings** button.
+
+![Choose destination settings dilaog where Replace has been selected as the update method and the columns are mapped to the new table](media/module-2-choose-data-destination-settings.png)
+
+5. Once again in the Power Query Editor, you should be able to see that your Output query now has some icons related to the output destination selected. Click on **Publish**.
+
+![Output query showcasing that a data destination has been assigned to it in the diagram view and the applied steps pane](media/module-2-publish.png)
+
+6. In the workspace list, rename your dataflow to a name of your choice by hovering over the dataflow and selecting the ellipsis which will display the **Properties** option.
+
+7. Refresh your dataflow, and then you should see your Lakehouse table created in your Lakehouse. 
+
+8. Check your Lakehouse to view the new table loaded to it.
