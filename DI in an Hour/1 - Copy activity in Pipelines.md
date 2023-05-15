@@ -96,6 +96,6 @@ IN this section you will create a copy activity to load data directly into the l
 
 ![Copy data details dialog showcasing a total of 1508501 rows written to the lakehouse as well as the duration of the run](media/module-1-copy-data-details.png)
 
-4.	Expand the **Duration breakdown**, you can know the time duration of each stage in copy activity. After reviewing the copy details, click **Close**.
+4. Expand the **Duration breakdown**, you can know the time duration of each stage in copy activity. After reviewing the copy details, click **Close**.
 
 ![Duration breakdown for the copy data activity showcasing total time spent for each process of the activity](media/module-1-duration-breakdown.png)
