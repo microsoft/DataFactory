@@ -68,7 +68,7 @@ To do this, select **Options** from the ribbon pane, then select the first 3 opt
 
 4. Select the **storeAndFwdFlag** column drop down menu. 
 
-```Note: If you get a message “List may be incomplete”, click Load more to see the value ‘Y’```
+    **Note**: If you get a message “List may be incomplete”, click Load more to see the value ‘Y’
 
 ![Autofilter shown for the column storeAndFwdFlag displaying only the value N in the list and the option to Load more values](media/module-2-autofilter.png)
 
@@ -109,7 +109,7 @@ Now with the data from the trips in place, we want to load the data that contain
 ![Use first row as headers option inside the table contextual menu for the table in the data preview](media/module-2-promote-headers.png)
 
 
-```Note: after promoting the headers, you will notice that a new step will be added to your Applied steps pane to set the data types of your columns```
+    **Note**: after promoting the headers, you will notice that a new step will be added to your Applied steps pane to set the data types of your columns
 
 2.	Right-click the **VendorID** column and from the contextual menu select the option that reads **Unpivot other columns**. This allows you to transform columns into attribute-value pairs, where columns become rows.
 
@@ -126,3 +126,48 @@ Now with the data from the trips in place, we want to load the data that contain
 
 ![Data type of columns changed](media/module-2-data-type-changed.png)
 
+5. Select the **Discount** column, go to the Transform tab in the ribbon. In the *number column* group, select the *Standard* option and from the dropdown select **Divide**.
+
+![Divide option found inside of the Transform tab of the ribbon inside the number column group and the Standard option](media/module-2-divide-option-transform.png)
+
+6. Inside the Divide dialog, enter the value 100.
+
+![Divide transform dialog in Dataflows](media/module-2-divide-dialog.png)
+
+## Combine trips and discounts data
+
+The next step is to combine both tables into a single table that has the discount that should be applied to the trip as well as the adjusted total. 
+
+Before doing so, at the bottom right hand of the Power Query editor, click the button (in the right bottom corner) to toggle on the **diagram view** so you can see both of your queries.
+
+![Diagram view toggled on showcasing the queries inside of the project as well as the data preview for the currently selected query](media/module-2-diagram-view-toggle.png)
+
+This view allows you to understand how your two queries are connected with each other as well as having a general view of how your dataflow is structured.
+
+1. Select the NYC_Taxi query and in the Home tab, select the option to *Merge* from within the Combine group and select the option for **Merge queries as new**.
+
+![Merge queries as new option inside of the Merge queries dialog in the Home tab](media/module-2-merge-queries-as-new.png)
+
+2. Inside the Merge dialog, select the “Right table for merge” to be the {Generated-NYC-Taxi-Green_Discounts} and once this table is selected click the *light-bulb* icon on the top right to see the suggested mapping of columns.
+
+![Merge dialog with both queries selected and the suggestions showcasing the columns that can be mapped](media/module-2-merge-dialog.png)
+
+    From the suggestion, pick the one that has the following mappings:
+    *	lpepPickupDate -> Date
+    *	vendorID -> VendorID
+
+3. Click **OK** when prompted to allow combining data.
+
+![Privacy and security warning when trying to combine data from multiple sources to prevent data leakage](media/module-2-allow-combine.png)
+
+4.	When prompted to allow combination of data sources, click on the **Continue** button.
+
+![Continue button to allow the combination of data between different data sources](media/module-2-continue-combine.png)
+
+5. Notice how in the Diagram view a new query was created and it shows the relationship of the new Merge query with the two that we previously created. You can scroll to the right of the Merge query and note that a new column with table values is present. This is the “Generated-NYC-Taxi-Green-Discounts" column. In the column header there’s an icon with two arrows going in opposite directions. Click on the icon and from the menu only select the *Discount* column only and click **OK**.
+
+![Expand the column of table values generated after the merge operation to see the values that were merged](media/module-2-expand-column.png)
+
+    **Note**: what this operation does is simply expand the contents that were inside of the table values to be new columns in the outer table.
+
+6. With the discount value now at the row level, we can create a new column to calculate the total amount after discount. To do so, go to the ribbon and select the Add column tab. Select the option that reads “Custom column” from within the General group.
