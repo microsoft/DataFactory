@@ -1,6 +1,6 @@
 # Data Engineering: Import notebook 
 
-To complete this section, first download the notebook from [this location](location).
+To complete this section, first download the notebook from [this location](Samples/SampleNotebook.ipynb).
 
 ## Navigate to Home
 
