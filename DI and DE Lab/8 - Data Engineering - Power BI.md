@@ -16,7 +16,17 @@ You can also use the **New report button** to create a new Power BI report from 
 
 
 ![Power BI](media/pbi1.gif?raw=true)
-
+The GIF above is based on the lakehouse named lab140lakehouse and the table named nyc_taxi, and presents the steps:
+1. Navigate to your Workspace.
+2. Access your lakehouse by clicking on its name, and select type: SQL Endpoint (or switch to SQL Endpoint mode).
+3. Transition to the "Reporting" tab, then click "New Report".
+4. A new Power BI card will open in your browser.
+5. Once Power BI has fully loaded, expand the data columns and measures (located on the right sidebar).
+6. Create your first visualization by selecting the "Pie chart" icon.
+7. Choose "fareAmount" and "tipAmount" to complete the first visualization.
+8. Create your second visualization by clicking the "Stacked area chart" icon.
+9. Select "lpepPickupDatetime" and "fareAmount" data.
+10. Enjoy the convenience of easy data access and the speed of creating reports with stunning visualizations.
 
 ## DirectLake vs DirectQuery in Power BI
 

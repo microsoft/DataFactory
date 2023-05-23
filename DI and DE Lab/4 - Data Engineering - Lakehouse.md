@@ -1,6 +1,8 @@
-# Data Engineering: Lakehouse artifact overview
+# Data Engineering: Discover the Lakehouse
 
-A Lakehouse presents as a database and is built on top of a data lake using Delta Lake files and tables. Lakehouses combine the SQL-based analytical capabilities of a relational data warehouse and the flexibility and scalability of a data lake. Lakehouses store all data formats and can be used with various analytics tools and programming languages. As cloud-based solutions, lakehouses can scale automatically and provide high availability and disaster recovery.
+**The foundation of Microsoft Fabric is a Lakehouse**, which is built on top of the **OneLake** scalable storage layer and uses **Apache Spark** and **SQL** compute engines for big data processing. A Lakehouse is a unified platform that combines:
+- The flexible and scalable storage of a data lake
+- The ability to query and analyze data of a data warehouse
 
 Some benefits of a lakehouse include:
 - Lakehouses use Spark and SQL engines to process large-scale data and support machine learning or predictive modeling analytics.
@@ -8,38 +10,65 @@ Some benefits of a lakehouse include:
 - Lakehouses support ACID (Atomicity, Consistency, Isolation, Durability) transactions through Delta Lake formatted tables for data consistency and integrity.
 - Lakehouses are a single location for data engineers, data scientists, and data analysts to access and use data.
 
-A Lakehouse is a great option if you want a scalable analytics solution that maintains data consistency. 
+Imagine your company has been storing structured data from NYC Taxi's transactional system, such as trip history, passenger counts, and fare information in a data warehouse. However, you have also collected unstructured data from social media, website logs, and third-party sources related to NYC Taxi, which are difficult to manage and analyze using the existing data warehouse infrastructure. Your company's new directive is to improve its decision-making capabilities by analyzing data in various formats across multiple sources. Therefore, the company decides to **leverage Microsoft Fabric's capabilities to analyze and manage these diverse datasets more efficiently.**
+
+## Add the previously created lakehouse to the imported notebook
+
+1. Click "Add" to add lakehouse.
+
+![Add Lakehouse](media/2023-05-22_16-51-27.png)
+
+2. Select "Existing lakehouse" and click "Add".
+
+![Select "Existing lakehouse" and click "Add"](media/2023-05-22_16-51-36.png)
+
+3. Select previously created lakehouse (assuming name "Bronze"), and click "Add".
+
+![Select previously created lakehouse (assuming name Bronze), and click Add](media/2023-05-22_16-51-49.png)
 
 
-<mark>Now, please follow along with the instructor as they demonstrate the steps shown in the GIF.
+## The lakehouse is attached to your notebook. It's time to discover the lakehouse artifact!
+
+<mark> Please follow along with the instructor as they demonstrate the steps shown in the GIF.
 </mark>
 
+![Let's discover the lakehouse](https://bit.ly/42RgHBS)
+
+The GIF provided demo the steps within the lab140lakehouse workspace, with the nyc_taxi Delta table. Here are the steps detailed:
+1. Unfold the "Tables" section in the interface.
+2. Unfold the advanced context menu for the "nyc_taxi" Delta table.
+3. Proceed to examine the "nyc_taxi" Delta table further by unfolding it to inspect the data types of specific columns.
+4. Extend the "Files" section to ascertain the presence of any unprocessed, unstructured files.
 
 ![Lakehouse artifact overview](media/2_30frames.gif?raw=true)
 
-## Get data from the lakehouse
+The GIF provided demo the steps within the lab140lakehouse workspace, with the nyc_taxi Delta table. Here are the steps detailed:
+1. Unfold the "Tables" section in the interface.
+2. Unfold the advanced context menu for the "nyc_taxi" Delta table.
+3. Proceed to examine the "nyc_taxi" Delta table further by unfolding it to inspect the data types of specific columns.
+4. Extend the "Files" section to ascertain the presence of any unprocessed, unstructured files.
 
+
+## Get data from the lakehouse
 
 The most common way to work with data in delta tables in Spark is to use Spark SQL. You can embed SQL statements in other languages (such as PySpark or Scala) by using the spark.sql library.
 
 <mark>Now, please follow along with the instructor as they demonstrate the steps shown in the GIF.
 </mark>
 
-![Get data from the lakehouse](media/3.gif?raw=true)
+![Get data from the lakehouse](media/3.gif?raw=true
+The GIF above is based on the lakehouse named lab140lakehouse and the table named nyc_taxi, and presents the steps:
+1. Expand the advanced context menu for the "nyc_taxi" Delta table, choose "Load data," and then select "Spark".
+2. A new cell containing the generated code should now appear in your notebook.
 
-There are three ways to access Lakehouse data in your notebook:
+To execute the cell code, use the shortcut CTRL + Enter on Windows, or ⌘ + Enter on MacOS. Alternatively, you can click the 'Run' icon (▶️) located on the left side of the code cell.
 
-* Using a relative path to the default Lakehouse, as shown in the code example.
-* Using the full ABFS (Azure Blob File System) path.
-* Using the syntax "/lakehousename/path", which is only valid when accessing a Lakehouse within the same workspace.
-
-`df = spark.sql("SELECT * FROM lab140lakehouse.nyc_taxi LIMIT 1000")` - This line of code uses the spark.sql() function to run an SQL query on a table called nyc_taxi located in the lakehouse lab140lakehouse. The query selects all columns (*) from the table and limits the result to the first 1000 rows with the LIMIT 1000 clause. The result of the query is then stored in a PySpark DataFrame called df.
+`df = spark.sql("SELECT * FROM Bronze.NYC_Taxi LIMIT 1000")` - This line of code uses the spark.sql() function to run an SQL query on a table called nyc_taxi located in the lakehouse Bronze. The query selects all columns (*) from the table and limits the result to the first 1000 rows with the LIMIT 1000 clause. The result of the query is then stored in a PySpark DataFrame called df.
 
 `display(df)` - the display() function is used to visualize the contents of a DataFrame in a tabular format. In this case, it visualizes the contents of the df DataFrame created in the previous line.
 
 ```pyspark
-df = spark.sql("SELECT * FROM lab140lakehouse.nyc_taxi LIMIT 1000")
-
+df = spark.sql("SELECT * FROM Bronze.NYC_Taxi LIMIT 1000")
 display(df)
 ```
 
@@ -47,7 +76,7 @@ Alternatively, you can use the %%sql magic in a notebook to run SQL statements.
 
 ```sql
 %%sql
-SELECT * FROM lab140lakehouse.nyc_taxi LIMIT 1000
+SELECT * FROM Bronze.NYC_Taxi LIMIT 1000
 ```
 
 The code `df.select("vendorID", "tripDistance", "fareAmount", "tipAmount").show(5)` is used to display the first five rows of a DataFrame called df, and only the columns named: "vendorID", "tripDistance", "fareAmount", "tipAmount". This is a useful function when working with large datasets to quickly inspect the data and ensure that it has been loaded correctly.
@@ -67,7 +96,7 @@ The code calculates the average fare amount per month by grouping the DataFrame 
 ```pyspark
 from pyspark.sql.functions import col, year, month, dayofmonth, avg
 
-df = spark.read.table("nyc_taxi")
+df = spark.read.table("NYC_Taxi")
 
 # Calculate average fare amount per month
 average_fare_per_month = (
@@ -89,6 +118,10 @@ average_fare_per_month.write.format("delta").mode("overwrite").saveAsTable("aver
 
 ![Refresh Lakehouse explorer](media/new_table_refresh.gif?raw=true)
 
+The GIF above is based on the lakehouse named lab140lakehouse and the table named nyc_taxi, and presents the steps:
+1. Expand the advanced context menu for the "Tables" section within the Lakehouse explorer.
+2. Click on "Refresh".
+3. Cofirm the presence of a new table named "average_fare_per_month".
 
 ### Scatter chart
 
