@@ -1,28 +1,14 @@
-# Project
+# Data Factory Tutorials
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+Welcome to our Data Factory repo where you will find some great resources on how to get started with using Data Factory in Microsoft Fabric!
 
-As the maintainer of this project, please make a few updates:
+Here are some useful links as you get started:
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+- Start by taking a look at the [Data Integration in an Hour tutorial](https://github.com/microsoft/DataFactory/tree/main/DI%20in%20an%20Hour) with the overview and prerequisites [here](https://github.com/microsoft/DataFactory/blob/main/DI%20in%20an%20Hour/0%20-%20Overview.md). In this tutorial you will learn how to get started with pipelines and dataflows in Data Factory.
+- Then take a look at the [Data Integration and Data Engineering Lab](https://github.com/microsoft/DataFactory/tree/main/DI%20and%20DE%20Lab), where you can learn how to build an end-to-end lakehouse architecture all the way from ingestion to reporting. You will learn how to ingest data into the lakehouse, use notebooks and Spark to transform your data, and then consumer the lakehouse data using SQL and Power BI.
 
-## Contributing
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
 
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Trademarks
 
