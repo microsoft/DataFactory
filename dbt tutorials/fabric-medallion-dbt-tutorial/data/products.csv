@@ -1,0 +1,11 @@
+product_id,product_name,category,price
+101,Smart Shirt,Apparel,49.99
+102,Fitness Tracker,Accessories,"129.99"
+103,Yoga Pants,Apparel,NaN
+104,Smart Shoes,Footwear,199.99
+105,Gym Gloves,Accessories,15.5
+106,Water Bottle,Accessories,NULL
+107,Running Shorts,Apparel,39.00
+108,Smart Cap,Apparel,59.99
+109,Fitness Band,Accessories,89.99
+110,Training Mat,Equipment,25.75

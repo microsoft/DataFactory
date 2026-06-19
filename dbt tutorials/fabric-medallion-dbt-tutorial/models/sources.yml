@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: ZavaBronzeLakehouse
+    schema: dbo
+    tables:
+      - name: customers
+        identifier: bronze_customers
+      - name: products
+        identifier: bronze_products
+      - name: orders
+        identifier: bronze_orders
